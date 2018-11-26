@@ -1,0 +1,16 @@
+# Please update the Pulsar version as appropriate.
+connectivityPlugins:
+  pulsarTransport:
+    classpath:
+      - ${MY_WORK}/bcpkix-jdk15on-1.55.jar
+      - ${MY_WORK}/bcprov-jdk15on-1.55.jar
+      - ${MY_WORK}/lz4-java-1.5.0.jar
+      - ${MY_WORK}/protobuf-java-3.5.1.jar
+      - ${MY_WORK}/protobuf-shaded-2.1.0-incubating.jar
+      - ${MY_WORK}/pulsar-client-2.2.0.jar
+      - ${MY_WORK}/pulsar-client-schema-2.2.0.jar
+      - ${MY_WORK}/pulsar-connector-1.0-Beta.jar
+      - ${MY_WORK}/pulsar-functions-api-2.2.0.jar
+      - ${MY_WORK}/slf4j-api-1.7.25.jar
+      - ${MY_WORK}/validation-api-1.1.0.Final.jar
+    class: com.apama.pulsarChainManager

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apama-project>
+	<dependency>
+		<dependencyentry path="" kind="src"/>
+	</dependency>
+	<catalogs>
+		<catalog path="catalogs/Generated scenario blocks" type="block"/>
+		<catalog path="catalogs/pulsar_test_receiver blocks" type="block"/>
+		<catalog path="catalogs/pulsar_test_receiver functions" type="function"/>
+	</catalogs>
+	<bundles>
+		<bundle file="UserDefinedConnectivityPlugins.bnd" origin-path="" origin="CONNECTIVITY_CATALOG">
+			<config-files>
+			</config-files>
+			<bundle-instance-files>
+				<file name="../bundles/UserDefinedConnectivityPlugins/@INSTANCE_NAME@.plugins.yaml" timestamp="1540797442531"/>
+				<file name="../bundles/UserDefinedConnectivityPlugins/@INSTANCE_NAME@.chains.yaml" timestamp="1540797442527"/>
+				<file name="../bundles/UserDefinedConnectivityPlugins/@INSTANCE_NAME@.properties" timestamp="1540797442534"/>
+			</bundle-instance-files>
+			<static-files>
+			</static-files>
+			<dashboard-files>
+			</dashboard-files>
+			<evt-files>
+			</evt-files>
+		</bundle>
+	</bundles>
+</apama-project>

@@ -1,0 +1,25 @@
+package com.softwareag.sample;
+
+using com.softwareag.connectivity.ConnectivityPlugins;
+
+event PulsarSendEvent {
+	string testName;
+	integer testNumber;
+}
+
+/** This monitor is responsible for Pulsar Test (Both Send and Receive)...  */
+monitor PulsarTest {
+	
+	action onload() {
+		ConnectivityPlugins.onApplicationInitialized();
+		log "Start Sending event";
+		on wait(60.0) {
+			integer count := 0;
+			while (count < 2000) {
+				send PulsarSendEvent("Send "+count.toString(), count) to "pulsar:my-topic";
+				count := count + 1;
+			}
+			log "End Sending event";
+		}
+	}
+}

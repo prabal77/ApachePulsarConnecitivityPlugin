@@ -1,0 +1,29 @@
+dynamicChainManagers:
+  pulsarManager:
+    transport: pulsarTransport
+    managerConfig:
+      channelPrefix: "pulsar:"
+      serviceUrl:  pulsar://apamahydtest01.eur.ad.sag:6650
+      enable.auto.acknowledgement: true
+      consumer.start.timeout: 60
+      ackrequest.frequency: 0.2
+      numIoThreads: 20
+      numListenerThreads: 2
+      producerConfig:
+        topicName: my-topic
+        producerName: myFirstProducer
+        blockIfQueueFull: true
+      consumerConfig:
+        topicNames:
+            - testTopic
+            - my-topic
+        consumerName: myFirstConsumer
+        receiverQueueSize: 1000
+        subscriptionName: testSubscription
+
+dynamicChains :
+  pulsarChain:
+    - apama.eventMap:
+        defaultEventType: com.softwareag.sample.PulsarSendEvent
+        suppressLoopback: true
+    - pulsarTransport:

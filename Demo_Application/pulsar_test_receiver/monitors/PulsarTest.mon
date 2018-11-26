@@ -1,0 +1,29 @@
+package com.softwareag.sample;
+
+using com.softwareag.connectivity.ConnectivityPlugins;
+using com.softwareag.connectivity.control.AckRequired;
+
+event PulsarSendEvent {
+	string testName;
+	integer testNumber;
+}
+
+/** This monitor is responsible for Pulsar Test (Both Send and Receive)...  */
+monitor PulsarTest {
+	
+	action onload() {
+		monitor.subscribe("pulsar:my-topic");
+		ConnectivityPlugins.onApplicationInitialized();
+		
+		log "Start receiving event";
+		on all PulsarSendEvent() as pSend {
+			log "Received Pulsar event " + pSend.toString() at INFO;
+		}
+		log "End receiving event";
+		
+		on all AckRequired() as ackRequired { 
+			log "Ackrequired received: Message Id "+ackRequired.messageId;
+		    ackRequired.ackUpTo();
+		}
+	}
+}
