@@ -3,7 +3,7 @@ dynamicChainManagers:
     transport: pulsarTransport
     managerConfig:
       channelPrefix: "pulsar:"
-      serviceUrl:  pulsar://apamahydtest01.eur.ad.sag:6650
+      serviceUrl:  pulsar://localhost:6650
       enable.auto.acknowledgement: true
       consumer.start.timeout: 60
       ackrequest.frequency: 0.2
