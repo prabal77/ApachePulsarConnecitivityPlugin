@@ -1,4 +1,6 @@
-<b>Apama Connectivity Plugin for Apache Pulsar.</b>
+<b>Apama Connectivity Plugin for Apache Pulsar.</b> <b> Alpha Version: Not fit for production use </b>
+
+<b>******************* TODO: Enable reliable communication via acknowledgement in EPL. producer topic is read from config file as of now, convert it to be dynamic ******************** </b>
 
 Apache Pulsar is an open-source distributed pub-sub messaging system. See https://pulsar.apache.org/ for detailed information.
 
@@ -78,4 +80,4 @@ In EPL file, the channel you are subscribing to (for receiver) and sending data 
 
 This connectivity transport sends and recieve data from pulsar as byte[].
 
-<b>******************* TODO: Enable reliable communication via acknowledgement in EPL. producer topic is read from config file as of now, convert it to be dynamic ******************** </b>
+
