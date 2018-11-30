@@ -1,6 +1,9 @@
-<b>Apama Connectivity Plugin for Apache Pulsar.</b> <b> Alpha Version: Not fit for production use </b>
+<b>Apama Connectivity Plugin for Apache Pulsar.</b> 
 
-<b>******************* TODO: Enable reliable communication via acknowledgement in EPL. producer topic is read from config file as of now, convert it to be dynamic ******************** </b>
+<b><i> Disclaimer : </i></b>
+1. <i> Alpha Version: Not fit for production use </i>
+2. <i>TODO: Enable reliable communication via acknowledgement in EPL. producer topic is read from config file as of now, convert it to be dynamic</i>
+3. <i>Apache Pulsar is used as a regular pub-sub platform, no other advanced features like Pulsar Functions are used. </i>
 
 Apache Pulsar is an open-source distributed pub-sub messaging system. See https://pulsar.apache.org/ for detailed information.
 
