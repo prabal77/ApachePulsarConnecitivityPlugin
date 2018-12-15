@@ -18,7 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import org.apache.pulsar.client.api.Producer;
 import org.slf4j.Logger;
 
-import com.apama.pulsarChainManager;
+import com.apama.PulsarChainManager;
 import com.apama.util.ExceptionUtil;
 import com.softwareag.connectivity.AbstractSimpleTransport;
 import com.softwareag.connectivity.Message;
@@ -30,9 +30,9 @@ import com.softwareag.connectivity.StatusReporter.StatusItem;
  * @author NANP
  *
  */
-public class producerTransport extends AbstractSimpleTransport {
+public class ProducerTransport extends AbstractSimpleTransport {
 
-	private pulsarChainManager chainManager;
+	private PulsarChainManager chainManager;
 	private Producer<byte[]> producer;
 
 	private final StatusItem managerProducedStatus;
@@ -41,7 +41,7 @@ public class producerTransport extends AbstractSimpleTransport {
 	private volatile AtomicBoolean shuttingDown = new AtomicBoolean(false);
 	private volatile Lock lock = new ReentrantLock();
 
-	public producerTransport(Logger logger, TransportConstructorParameters params, pulsarChainManager chainManager)
+	public ProducerTransport(Logger logger, TransportConstructorParameters params, PulsarChainManager chainManager)
 			throws IllegalArgumentException, Exception {
 		super(logger, params);
 
@@ -49,7 +49,7 @@ public class producerTransport extends AbstractSimpleTransport {
 		this.chainManager = chainManager;
 
 		// Setup status monitoring and KPIs
-		final String statusPrefix = String.format("%s.%s.%s", pulsarChainManager.CHANNEL_PREFIX_TO,
+		final String statusPrefix = String.format("%s.%s.%s", PulsarChainManager.CHANNEL_PREFIX_TO,
 				chainManager.managerName, this.chainManager.getProducerPropertyMap().getOrDefault("topic", ""));
 
 		statusItem = getStatusReporter().createStatusItem(statusPrefix + ".status", STATUS_STARTING);

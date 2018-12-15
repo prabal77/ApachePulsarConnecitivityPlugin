@@ -29,7 +29,7 @@ import org.apache.pulsar.client.api.MessageListener;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.slf4j.Logger;
 
-import com.apama.pulsarChainManager;
+import com.apama.PulsarChainManager;
 import com.apama.util.ExceptionUtil;
 import com.softwareag.connectivity.AbstractSimpleTransport;
 import com.softwareag.connectivity.Direction;
@@ -42,9 +42,9 @@ import com.softwareag.connectivity.StatusReporter.StatusItem;
  * @author NANP
  *
  */
-public class consumerTransport extends AbstractSimpleTransport {
+public class ConsumerTransport extends AbstractSimpleTransport {
 
-	private final pulsarChainManager chainManager;
+	private final PulsarChainManager chainManager;
 	private Consumer<byte[]> consumer;
 	private ConsumerBuilder<byte[]> consumerBuilder;
 	private CompletableFuture<Consumer<byte[]>> future;
@@ -57,7 +57,7 @@ public class consumerTransport extends AbstractSimpleTransport {
 	private final int maxReceiverQueueSize;
 	private final Map<String, org.apache.pulsar.client.api.Message<byte[]>> messageIdMap;
 
-	public consumerTransport(Logger logger, TransportConstructorParameters params, pulsarChainManager chainManager)
+	public ConsumerTransport(Logger logger, TransportConstructorParameters params, PulsarChainManager chainManager)
 			throws IllegalArgumentException, Exception {
 		super(logger, params);
 		// Save the callee chainManager instance
@@ -68,7 +68,7 @@ public class consumerTransport extends AbstractSimpleTransport {
 				(int) (this.chainManager.getAckRequestFrequency() * this.maxReceiverQueueSize));
 
 		// Setup status monitoring and KPIs
-		final String statusPrefix = String.format("%s.%s.%s", pulsarChainManager.CHANNEL_PREFIX_FROM,
+		final String statusPrefix = String.format("%s.%s.%s", PulsarChainManager.CHANNEL_PREFIX_FROM,
 				chainManager.managerName, this.chainManager.getConsumerPropertyMap().getOrDefault("topic", ""));
 		statusItem = getStatusReporter().createStatusItem(statusPrefix + ".status", STATUS_STARTING);
 
@@ -180,7 +180,7 @@ public class consumerTransport extends AbstractSimpleTransport {
 	 * @return {@link MessageListener}
 	 */
 	@SuppressWarnings("unchecked")
-	private MessageListener<byte[]> createMessageListenerStrategy(pulsarChainManager chainManager) {
+	private MessageListener<byte[]> createMessageListenerStrategy(PulsarChainManager chainManager) {
 
 		if (chainManager.isAutoAckEnabled()) {
 

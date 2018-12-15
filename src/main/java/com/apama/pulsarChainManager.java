@@ -22,8 +22,8 @@ import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.slf4j.Logger;
 
-import com.apama.transport.consumerTransport;
-import com.apama.transport.producerTransport;
+import com.apama.transport.ConsumerTransport;
+import com.apama.transport.ProducerTransport;
 import com.softwareag.connectivity.AbstractSimpleTransport;
 import com.softwareag.connectivity.AbstractTransport;
 import com.softwareag.connectivity.Direction;
@@ -40,7 +40,7 @@ import com.softwareag.connectivity.util.MapExtractor;
  * @author Prabal Nandi
  *
  */
-public class pulsarChainManager extends AbstractChainManager implements ChannelLifecycleListener {
+public class PulsarChainManager extends AbstractChainManager implements ChannelLifecycleListener {
 
 	/** Identifies the version of the API this plug-in was built against. */
 	public static final String CONNECTIVITY_API_VERSION = com.softwareag.connectivity.ConnectivityPlugin.CONNECTIVITY_API_VERSION;
@@ -75,7 +75,7 @@ public class pulsarChainManager extends AbstractChainManager implements ChannelL
 	private final StatusItem producedStatus;
 	private final StatusItem statusItem;
 
-	public pulsarChainManager(Logger logger, ChainManagerConstructorParameters params)
+	public PulsarChainManager(Logger logger, ChainManagerConstructorParameters params)
 			throws IllegalArgumentException, Exception {
 		super(logger, params);
 
@@ -149,8 +149,8 @@ public class pulsarChainManager extends AbstractChainManager implements ChannelL
 			throws IllegalArgumentException, Exception {
 
 		logger.info("createTransport " + params.getSubscribeChannels().isEmpty());
-		return params.getSubscribeChannels().isEmpty() ? new consumerTransport(logger, params, this)
-				: new producerTransport(logger, params, this);
+		return params.getSubscribeChannels().isEmpty() ? new ConsumerTransport(logger, params, this)
+				: new ProducerTransport(logger, params, this);
 	}
 
 	@Override
